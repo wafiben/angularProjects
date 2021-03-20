@@ -1,3 +1,4 @@
+import { BookListComponent } from './book-list/book-list.component';
 import { HeaderComponent } from './header/header.component';
 import { SingleBookComponent } from './book-list/single-book/single-book.component';
 import { BooksService } from './services/books.service';
@@ -14,10 +15,13 @@ import { BookFormComponent } from './book-list/book-form/book-form.component';
 
 
 
-const routes: Routes = [{path: 'first-component', component:SignupComponent},
-{},
-{},
-{}]
+const routes: Routes = [{path: 'auth/signup', component:SignupComponent},
+{path: 'auth/signup', component: SigninComponent},
+{path: 'auth/sigin', component:SignupComponent},
+{path: 'books', component:BookListComponent},
+{path: 'books/new', component:BookFormComponent},
+{path: 'books/view/:id', component:SingleBookComponent}]
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ const routes: Routes = [{path: 'first-component', component:SignupComponent},
     SignupComponent,
     BookFormComponent,
     SingleBookComponent,
-    HeaderComponent
+    HeaderComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,
