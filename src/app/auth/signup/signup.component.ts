@@ -47,8 +47,8 @@ signUpForm = new FormGroup({
   initForm()
   {
     this.signUpForm = this.formBuilder.group({
-      email:['A',[Validators.required]] ,
-      password: ['type your password' ,[Validators.required,Validators.minLength(6)]]
+      email:['',[Validators.required]] ,
+      password: ['' ,[Validators.required,Validators.minLength(6)]]
     });
   }
 
