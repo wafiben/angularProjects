@@ -12,6 +12,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { BookFormComponent } from './book-list/book-form/book-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import{ HttpClient, HttpClientModule} from '@angular/common/http';
 
 
 
@@ -34,10 +36,14 @@ const routes: Routes = [{path: 'auth/signup', component:SignupComponent},
     BookListComponent
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes)
   ],
+  exports: [RouterModule],
   providers: [AuthGuardService,AuthService,BooksService],
   bootstrap: [AppComponent]
 })
