@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import "firebase/analytics";
 import firebase from "firebase/app";
+import '@firebase/auth';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,7 +20,8 @@ export class AppComponent {
     appId: "1:896835585826:web:7007ee1fcfe646cf4e477b",
     measurementId: "G-ZHXPDR0DRT"
   };
-  // Initialize Firebase
+  // Initialize FirebaseApp.initializeApp()
+
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 }

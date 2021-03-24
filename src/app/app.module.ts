@@ -13,16 +13,20 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { BookFormComponent } from './book-list/book-form/book-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import{ HttpClient, HttpClientModule} from '@angular/common/http';
+import{  HttpClientModule} from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
-const routes: Routes = [{path: 'auth/signup', component:SignupComponent},
-{path: 'auth/signup', component: SigninComponent},
-{path: 'auth/sigin', component:SignupComponent},
-{path: 'books', component:BookListComponent},
-{path: 'books/new', component:BookFormComponent},
-{path: 'books/view/:id', component:SingleBookComponent}]
+const routes: Routes = [
+{path: 'auth/signup', component: SignupComponent},
+{path: 'auth/signin', component:SigninComponent},
+{path: 'books', component:BookListComponent,canActivate: [ AuthGuardService ]},
+{path: 'books/new', component:BookFormComponent,canActivate: [ AuthGuardService ]},
+{path: 'books/view/:id', component:SingleBookComponent,canActivate: [ AuthGuardService ]},
+{ path: '',   redirectTo: 'books', pathMatch: 'full',canActivate: [ AuthGuardService ]}
+
+]
 
 
 @NgModule({
@@ -33,7 +37,8 @@ const routes: Routes = [{path: 'auth/signup', component:SignupComponent},
     BookFormComponent,
     SingleBookComponent,
     HeaderComponent,
-    BookListComponent
+    BookListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     HttpClientModule,

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import "firebase/analytics";
-import firebase from "firebase/app";
 
+import firebase from '../../../../node_modules/firebase' ;
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class AuthService {
   constructor() { }
   createNewUser(email:string,password:string)
   {
-   var promiseCreat=new Promise((resolve,reject)=>
+   return new Promise((resolve,reject)=>
    {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(
       ()=>
@@ -21,14 +20,15 @@ export class AuthService {
       (error)=>
       {
         reject(error);
-      })
+      }
+    )
    })
-   return promiseCreat;
+
 
   }
   signInUser(email:string,password:string)
   {
-    var promiseSignin = new Promise((reslove,reject)=>
+   return new Promise((resolve,reject)=>
     {
       firebase.auth().signInWithEmailAndPassword(email, password).then(
         ()=>
@@ -40,11 +40,11 @@ export class AuthService {
           reject(error);
         })
     })
-    return promiseSignin
+
   }
-  sigOut(email:string,password:string)
+  signOut()
   {
-    firebase.auth().signOut()
+    firebase.auth().signOut();
 
   }
 
